@@ -9,12 +9,15 @@ import '../src/constants.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:math';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Question extends StatelessWidget {
   const Question({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser;
+    CircleAvatar(radius: 25, backgroundImage: NetworkImage('${user?.photoURL}'));
     return Center(
         child: Container(
       width: 350,
