@@ -6,6 +6,9 @@ import 'routes.dart' as route;
 import 'package:teuday/home.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../src/constants.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'dart:math';
 
 class Question extends StatelessWidget {
   const Question({Key? key}) : super(key: key);
@@ -27,9 +30,21 @@ class Question extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             const ListTile(
-              title: Text('Pergunta De Hoje', style: TextStyle(fontSize: 18.0)),
-              subtitle: Text('Aqui vai a perguntinha do dia',
-                  style: TextStyle(fontSize: 18.0)),
+              title: Text('Pergunta de hoje', style: TextStyle(fontSize: 18.0)),
+            ),
+            Container(
+              child: FutureBuilder<dynamic>(
+                future: fetchQuestion(randomNumber()),
+                builder: (context, snapshot){
+                  if(snapshot.hasData){
+                    return Text(snapshot.data!["Text"].toString()
+                        ,style: const TextStyle(fontSize: 18.0));
+                  }else if(snapshot.hasError){
+                    return Text('${snapshot.error}');
+                  }
+                  return const Center(child: CircularProgressIndicator(),);
+                },
+              ),
             ),
             TextField(
               // ignore: deprecated_member_use
@@ -65,5 +80,28 @@ class Question extends StatelessWidget {
         ),
       ),
     ));
+  }
+
+  fetchQuestion(id) async{
+    var url = Uri.parse("https://o57o4uo693.execute-api.us-east-1.amazonaws.com/dev/question/${id}");
+    var response = await http.get(url);
+    if(response.statusCode == 200){
+      return jsonDecode(response.body);
+    }else{
+      // print("{response.statusCode}");
+      throw Exception("Não foi possível carregar a pergunta");
+    }
+  }
+
+  int randomNumber() {
+    var random = Random();
+
+    int min = 1;
+
+    int max = 23;
+
+    int result = min + random.nextInt(max - min);
+
+    return result;
   }
 }

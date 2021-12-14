@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'routes.dart' as route;
-import 'package:teuday/home.dart';
+import 'package:teuday/question.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../src/constants.dart';
 
@@ -71,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => const Home(),
+                                        builder: (context) => const Question(),
                                       ),
                                     );
                                   },
