@@ -5,17 +5,23 @@ import 'routes.dart' as route;
 import 'package:teuday/question.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../src/constants.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:teuday/google_login.dart';
+import 'package:provider/provider.dart';
 
-void main() {
-  runApp(const MyApp());
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  Widget build(BuildContext context)=> ChangeNotifierProvider(
+      create: (context) => GoogleSignInProvider(),
+    child: MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Generated App',
       theme: ThemeData(
@@ -24,19 +30,20 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue)
             .copyWith(secondary: const Color(0xFF2196f3)),
       ),
-      home: const MyHomePage(),
-    );
+      home: MyHomePage(),
+    )
+  );
   }
-}
+//
+// class MyHomePage extends StatefulWidget {
+//   const MyHomePage({Key? key}) : super(key: key);
+//
+//
+//   @override
+//   _MyHomePageState createState() => _MyHomePageState();
+// }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
+class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,12 +75,15 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                                 ElevatedButton(
                                   onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => const Question(),
-                                      ),
-                                    );
+                                    final provider = Provider.of<GoogleSignInProvider>(context, listen:false);
+                                    provider.googleLogin().then((data){
+                                      Navigator.push(
+                                        context,
+                                        new MaterialPageRoute(
+                                          builder: (context) => const Question(),
+                                        ),
+                                      );
+                                    });
                                   },
                                   child: const Text(
                                     "Login",
@@ -96,8 +106,6 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.all(0.0),
         alignment: Alignment.center,
       ),
-    );
+  );
   }
-
-  void buttonPressed() {}
 }
