@@ -1,11 +1,4 @@
-// ignore_for_file: unused_import, unused_local_variable, avoid_unnecessary_containers, unnecessary_brace_in_string_interps
-
 import 'package:flutter/material.dart';
-import 'package:teuday/question.dart';
-import 'routes.dart' as route;
-import 'package:teuday/deprecated/home.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import '../src/constants.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:math';
@@ -81,7 +74,7 @@ class Question extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const Home(),
+                        builder: (context) => const Question(),
                       ),
                     );
                   }, // Handle your callback.
