@@ -74,7 +74,7 @@ class MyHomePage extends StatelessWidget {
                                   height: 200,
                                   width: 200,
                                 ),
-<<<<<<< HEAD
+
                                 ButtonBar(
                                   children: <Widget>[
                                     InkWell(
@@ -102,7 +102,7 @@ class MyHomePage extends StatelessWidget {
                                     )
                                   ],
                                 ),
-=======
+
                                 ElevatedButton(
                                   onPressed: () {
                                     final provider = Provider.of<GoogleSignInProvider>(context, listen:false);
@@ -129,7 +129,7 @@ class MyHomePage extends StatelessWidget {
                                             const Color(0xFFff7f00)),
                                   ),
                                 )
->>>>>>> af3283391bdc79e4767a6274ae1758d270f0a929
+
                               ])
                         ])
                   ])

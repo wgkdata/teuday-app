@@ -1,16 +1,29 @@
-# teuday
 
-A new Flutter project.
+# Questions API
 
-## Getting Started
+A simple REST API to retrieve questions in *Brazilian Portuguese* language.
 
-This project is a starting point for a Flutter application.
+## ⚙️ Architecture
 
-A few resources to get you started if this is your first Flutter project:
+- Login with your Google Account
+- Answer the daily question
+- Don't want to answer that question today? No problem, the change button can help you :)
+- View your past year answers!
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## 💻  Technology
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+TeuDay uses the following tech stack:
+
+- [Flutter](https://flutter.dev/) - Open source framework by Google for building beautiful, natively compiled, multi-platform applications
+- [Google Firebase](https://firebase.google.com/) - Google's mobile application development platform
+- [Questions API](https://github.com/wgkdata/questions-api) - Modern API for simple questions, also made by our team!
+
+## 📱 Test/Dev
+
+[](https://emojipedia.org/warning/#:~:text=Emoji%20Meaning,to%20Emoji%201.0%20in%202015.)
+
+ ⚠️ **Important:** If you want to develop or thest TeuDay, remember to request Google's authentication file to [Luan Lopes](https://github.com/wgkdata).
+
+##
+
+Made by [Luan Lopes](https://github.com/wgkdata) & [Vinicius Ferri](https://github.com/vini-ferri).
