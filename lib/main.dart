@@ -1,6 +1,7 @@
 // ignore_for_file: unused_import
 
 import 'package:flutter/material.dart';
+import 'deprecated/home.dart';
 import 'routes.dart' as route;
 import 'package:teuday/question.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -63,32 +64,36 @@ class _MyHomePageState extends State<MyHomePage> {
                               children: <Widget>[
                                 Image.asset(
                                   'assets/TeuDay.png',
-                                  height: 100,
-                                  width: 100,
+                                  height: 200,
+                                  width: 200,
                                 ),
-                                ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => const Question(),
+                                ButtonBar(
+                                  children: <Widget>[
+                                    InkWell(
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => const Home(),
+                                          ),
+                                        );
+                                      }, // Handle your callback.
+                                      splashColor:
+                                          Colors.brown.withOpacity(0.5),
+                                      child: Ink(
+                                        height: 80,
+                                        width: 280,
+                                        decoration: const BoxDecoration(
+                                          image: DecorationImage(
+                                            image:
+                                                AssetImage('assets/login.png'),
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
                                       ),
-                                    );
-                                  },
-                                  child: const Text(
-                                    "Login",
-                                    style: TextStyle(
-                                        fontSize: 23.0,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w300,
-                                        fontFamily: "Roboto"),
-                                  ),
-                                  style: ButtonStyle(
-                                    backgroundColor:
-                                        MaterialStateProperty.all<Color>(
-                                            const Color(0xFFff7f00)),
-                                  ),
-                                )
+                                    )
+                                  ],
+                                ),
                               ])
                         ])
                   ])

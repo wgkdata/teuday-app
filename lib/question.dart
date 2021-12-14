@@ -30,7 +30,9 @@ class Question extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             const ListTile(
-              title: Text('Pergunta de hoje', style: TextStyle(fontSize: 18.0)),
+              title: Text('Pergunta de hoje',
+                  style:
+                      TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold)),
             ),
             Container(
               child: FutureBuilder<dynamic>(
@@ -38,7 +40,8 @@ class Question extends StatelessWidget {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     return Text(snapshot.data!["Text"].toString(),
-                        style: const TextStyle(fontSize: 18.0));
+                        style: const TextStyle(
+                            fontSize: 18.0, color: Color(0xff343a40)));
                   } else if (snapshot.hasError) {
                     return Text('${snapshot.error}');
                   }
@@ -53,13 +56,18 @@ class Question extends StatelessWidget {
               cursorColor: Theme.of(context).cursorColor,
               maxLength: 300,
               maxLines: 5,
+              autofocus: false,
               decoration: const InputDecoration(
+                constraints: BoxConstraints.tightFor(width: 300),
+                isDense: true,
+                filled: true,
+                fillColor: Color(0xffced4da),
                 labelText: 'Resposta',
                 labelStyle: TextStyle(
                   color: Color(0xff2A2235),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Color(0xff2A2235)),
+                  borderSide: BorderSide(color: Color(0xff6c757d)),
                 ),
               ),
             ),
@@ -76,36 +84,11 @@ class Question extends StatelessWidget {
                   }, // Handle your callback.
                   splashColor: Colors.brown.withOpacity(0.5),
                   child: Ink(
-                    height: 50,
-                    width: 50,
+                    height: 35,
+                    width: 35,
                     decoration: const BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage('assets/send.png'),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                )
-              ],
-            ),
-            ButtonBar(
-              children: <Widget>[
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const Question(),
-                      ),
-                    );
-                  }, // Handle your callback.
-                  splashColor: Colors.brown.withOpacity(0.5),
-                  child: Ink(
-                    height: 50,
-                    width: 50,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/refresh.png'),
                         fit: BoxFit.cover,
                       ),
                     ),

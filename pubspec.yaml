@@ -68,6 +68,7 @@ flutter:
   - assets/TeuDay.png
   - assets/go.png
   - assets/send.png
+  - assets/login.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:

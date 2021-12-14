@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "217411949083",
+    "project_id": "teuday-backend",
+    "storage_bucket": "teuday-backend.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:217411949083:android:3b3c36cf2375624539debe",
+        "android_client_info": {
+          "package_name": "com.example.teuday"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "217411949083-b6h9dik6mip8rg9uboavs0nbe3vgsgfu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.teuday",
+            "certificate_hash": "1691efd1dc5b3f5b52dcbd77f812b8ab8417b585"
+          }
+        },
+        {
+          "client_id": "217411949083-thnp03no7ft2ssji5v02qaqs1m0n97sp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABKSwW2VB6GBT-ydxVuBSXjnOiw4Fd5xA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "217411949083-thnp03no7ft2ssji5v02qaqs1m0n97sp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
