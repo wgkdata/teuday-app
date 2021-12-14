@@ -2,10 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:teuday/question.dart';
-import 'routes.dart' as route;
-import 'package:teuday/home.dart';
+import '../routes.dart' as route;
+import 'package:teuday/deprecated/home.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../src/constants.dart';
+import '../../src/constants.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);

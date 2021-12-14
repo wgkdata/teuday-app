@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:teuday/question.dart';
 import 'routes.dart' as route;
-import 'package:teuday/home.dart';
+import 'package:teuday/deprecated/home.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../src/constants.dart';
 import 'package:http/http.dart' as http;
@@ -86,7 +86,7 @@ class Question extends StatelessWidget {
     var url = Uri.parse("https://o57o4uo693.execute-api.us-east-1.amazonaws.com/dev/question/${id}");
     var response = await http.get(url);
     if(response.statusCode == 200){
-      return jsonDecode(response.body);
+      return jsonDecode(utf8.decode(response.bodyBytes));
     }else{
       // print("{response.statusCode}");
       throw Exception("Não foi possível carregar a pergunta");
