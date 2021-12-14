@@ -1,4 +1,4 @@
-// ignore_for_file: unused_import, unused_local_variable
+// ignore_for_file: unused_import, unused_local_variable, avoid_unnecessary_containers, unnecessary_brace_in_string_interps
 
 import 'package:flutter/material.dart';
 import 'package:teuday/question.dart';
@@ -35,14 +35,16 @@ class Question extends StatelessWidget {
             Container(
               child: FutureBuilder<dynamic>(
                 future: fetchQuestion(randomNumber()),
-                builder: (context, snapshot){
-                  if(snapshot.hasData){
-                    return Text(snapshot.data!["Text"].toString()
-                        ,style: const TextStyle(fontSize: 18.0));
-                  }else if(snapshot.hasError){
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return Text(snapshot.data!["Text"].toString(),
+                        style: const TextStyle(fontSize: 18.0));
+                  } else if (snapshot.hasError) {
                     return Text('${snapshot.error}');
                   }
-                  return const Center(child: CircularProgressIndicator(),);
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
                 },
               ),
             ),
@@ -63,17 +65,52 @@ class Question extends StatelessWidget {
             ),
             ButtonBar(
               children: <Widget>[
-                ElevatedButton(
-                  child: const Text('Salvar'),
-                  onPressed: () {
+                InkWell(
+                  onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) => const Home(),
                       ),
                     );
-                  },
-                ),
+                  }, // Handle your callback.
+                  splashColor: Colors.brown.withOpacity(0.5),
+                  child: Ink(
+                    height: 50,
+                    width: 50,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/send.png'),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ),
+            ButtonBar(
+              children: <Widget>[
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Question(),
+                      ),
+                    );
+                  }, // Handle your callback.
+                  splashColor: Colors.brown.withOpacity(0.5),
+                  child: Ink(
+                    height: 50,
+                    width: 50,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/refresh.png'),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                )
               ],
             ),
           ],
@@ -82,12 +119,13 @@ class Question extends StatelessWidget {
     ));
   }
 
-  fetchQuestion(id) async{
-    var url = Uri.parse("https://o57o4uo693.execute-api.us-east-1.amazonaws.com/dev/question/${id}");
+  fetchQuestion(id) async {
+    var url = Uri.parse(
+        "https://o57o4uo693.execute-api.us-east-1.amazonaws.com/dev/question/${id}");
     var response = await http.get(url);
-    if(response.statusCode == 200){
+    if (response.statusCode == 200) {
       return jsonDecode(utf8.decode(response.bodyBytes));
-    }else{
+    } else {
       // print("{response.statusCode}");
       throw Exception("Não foi possível carregar a pergunta");
     }
