@@ -1,9 +1,10 @@
+<h1>
+<img src="https://citywise.org/wp-content/uploads/2019/11/SelfKnowledge.png" width="6%">
+TeuDay App</h1>
 
-# Questions API
+TeuDay is an app that provides you a single self-knowledge question per day. With this, you can know a little bit more about yourself! ✨
 
-A simple REST API to retrieve questions in *Brazilian Portuguese* language.
-
-## ⚙️ Architecture
+##  💡 Features
 
 - Login with your Google Account
 - Answer the daily question
