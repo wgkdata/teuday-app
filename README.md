@@ -23,7 +23,7 @@ TeuDay uses the following tech stack:
 
 [](https://emojipedia.org/warning/#:~:text=Emoji%20Meaning,to%20Emoji%201.0%20in%202015.)
 
- ⚠️ **Important:** If you want to develop or thest TeuDay, remember to request Google's authentication file to [Luan Lopes](https://github.com/wgkdata).
+ ⚠️ **Important:** If you want to develop or test TeuDay, remember to request Google's authentication file to [Luan Lopes](https://github.com/wgkdata).
 
 ##
 
