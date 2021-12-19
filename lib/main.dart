@@ -70,7 +70,7 @@ class MyHomePage extends StatelessWidget {
                                           Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                              builder: (context) => const Question(),
+                                              builder: (context) => ManageQuestion(),
                                             ),
                                           );
                                         });

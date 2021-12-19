@@ -3,9 +3,18 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:math';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:teuday/answers_service.dart';
+import 'package:intl/intl.dart';
 
-class Question extends StatelessWidget {
-  const Question({Key? key}) : super(key: key);
+class ManageQuestion extends StatefulWidget {
+  @override
+  State<ManageQuestion> createState() => _ManageQuestionState();
+}
+
+class _ManageQuestionState extends State<ManageQuestion> {
+  late int id;
+  late String question;
+  late String answer;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +44,8 @@ class Question extends StatelessWidget {
                 future: fetchQuestion(randomNumber()),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
-                    return Text(snapshot.data!["Text"].toString(),
+                    question = snapshot.data!["Text"].toString();
+                    return Text(question,
                         style: const TextStyle(
                             fontSize: 18.0, color: Color(0xff343a40)));
                   } else if (snapshot.hasError) {
@@ -66,15 +76,19 @@ class Question extends StatelessWidget {
                   borderSide: BorderSide(color: Color(0xff6c757d)),
                 ),
               ),
+              onChanged: (value){
+                answer = value;
+              },
             ),
             ButtonBar(
               children: <Widget>[
                 InkWell(
                   onTap: () {
+                    AnswersService.addAnswer(question: question, answ: answer, userInfo: user?.email, year: currentYear());
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const Question(),
+                        builder: (context) => ManageQuestion(),
                       ),
                     );
                   }, // Handle your callback.
@@ -120,5 +134,12 @@ class Question extends StatelessWidget {
     int result = min + random.nextInt(max - min);
 
     return result;
+  }
+
+  String currentYear() {
+    final DateTime now = DateTime.now();
+    final DateFormat formatter = DateFormat('yyyy');
+    final String formatted = formatter.format(now);
+    return formatted;
   }
 }
